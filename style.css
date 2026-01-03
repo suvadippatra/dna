@@ -1,0 +1,73 @@
+:root {
+    --paper-color: #fcfbf9;
+    --ink-color: #2c3e50;
+    --font-main: 'Patrick Hand', cursive;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--paper-color);
+    color: var(--ink-color);
+    font-family: var(--font-main);
+    overflow-x: hidden;
+    /* Hide scrollbar for immersion */
+    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;  /* IE/Edge */
+}
+
+body::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+}
+
+/* Invisible container to enable scrolling */
+.scroll-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+    pointer-events: none; /* Touches pass through to canvas/body */
+}
+
+/* Height determines animation duration */
+.scroll-height {
+    height: 1200vh; /* 12x screen height for long, smooth assembly */
+}
+
+#ui-layer {
+    position: fixed;
+    bottom: 30px;
+    width: 100%;
+    text-align: center;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.instruction {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    animation: float 2s infinite ease-in-out;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
